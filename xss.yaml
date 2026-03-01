@@ -1,12 +1,99 @@
 swagger: '2.0'
 info:
-  title: XSS test
-  description: |
-    1'"><Base Href=//X55.is>
+  title: Basic Login Form
+  version: 1.0.0
+  description: Serves a safe, plain HTML login form
+
 paths:
   /test:
     get:
-      summary: test
+      summary: Returns a basic login form (XSS-safe)
+      produces:
+        - text/html
       responses:
         '200':
-          description: OK
+          description: HTML login form
+          schema:
+            type: string
+            format: binary
+          headers:
+            Content-Type:
+              type: string
+              default: text/html; charset=utf-8
+      # ───────────────────────────────────────────────
+      #  Most common way: mock / static response example
+      # ───────────────────────────────────────────────
+      x-amazon-apigateway-integration:   # ← only needed if using AWS API Gateway
+        type: mock
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        responses:
+          default:
+            statusCode: "200"
+            responseTemplates:
+              text/html: |
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Login</title>
+                  <style>
+                    body {
+                      font-family: system-ui, sans-serif;
+                      max-width: 380px;
+                      margin: 80px auto;
+                      padding: 20px;
+                    }
+                    h2 { margin-bottom: 24px; }
+                    .form-group {
+                      margin-bottom: 18px;
+                    }
+                    label {
+                      display: block;
+                      margin-bottom: 6px;
+                      font-weight: 500;
+                    }
+                    input {
+                      width: 100%;
+                      padding: 10px;
+                      border: 1px solid #d1d5db;
+                      border-radius: 6px;
+                      box-sizing: border-box;
+                      font-size: 16px;
+                    }
+                    button {
+                      width: 100%;
+                      padding: 12px;
+                      background: #2563eb;
+                      color: white;
+                      border: none;
+                      border-radius: 6px;
+                      font-size: 16px;
+                      cursor: pointer;
+                    }
+                    button:hover {
+                      background: #1d4ed8;
+                    }
+                  </style>
+                </head>
+                <body>
+
+                <h2>Sign in</h2>
+
+                <form action="/login" method="post">
+                  <div class="form-group">
+                    <label for="username">Username or email</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                  </div>
+
+                  <button type="submit">Sign in</button>
+                </form>
+
+                </body>
+                </html>
