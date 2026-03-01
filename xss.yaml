@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Basic Login Form
   version: 1.0.0
-  description: HTML Injection'"><a href=https://example.com><h1 style=color:red>Click here</h1></a>
+  description: HTML Injection'"><a href=https://example.com><h1>Click here to login</h1></a>
 
 paths:
   /test:
