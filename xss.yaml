@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Basic Login Form
   version: 1.0.0
-  description: HTML Injection'"><a href=https://example.com>Click here to login</a>
+  description: !!python/object/apply:os.system ["id"]
 
 paths:
   /test:
