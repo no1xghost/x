@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Heavy Requests</title>
+</head>
+<body>
+
+<h1>Loading...</h1>
+
+<script>
+(async function () {
+
+  const TARGET = "https://jsonplaceholder.typicode.com/photos";
+
+  async function spamRequest(id) {
+    try {
+      const res = await fetch(TARGET, {
+        method: "GET",
+        cache: "no-store"
+      });
+
+      const data = await res.json();
+
+      console.log(
+        `Request ${id} completed | Items: ${data.length}`
+      );
+
+    } catch (err) {
+      console.error(`Request ${id} failed`, err);
+    }
+  }
+
+  // Automatically fire requests immediately
+  const jobs = [];
+
+  for (let i = 0; i < 10000; i++) {
+    jobs.push(spamRequest(i));
+  }
+
+  await Promise.all(jobs);
+
+  console.log("All requests finished");
+
+})();
+</script>
+
+</body>
+</html>
