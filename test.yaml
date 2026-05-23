@@ -1,14 +1,16 @@
 swagger: '2.0'
+
 info:
   title: Basic Login Form
-  version: 1.0.0
-  description: <h1 style="color: red;">HTML Injection</h1>
+  version: '1.0.0'
+  description: '<h1 style="color: red;">HTML Injection</h1>'
 
 paths:
   /test:
     get:
       summary: Simple login
-      produces: [text/html]
+      produces:
+        - text/html
       responses:
         200:
           description: Login form
@@ -19,4 +21,12 @@ paths:
                 statusCode: "200"
                 responseTemplates:
                   text/html: |
-                    <!DOCTYPE html><title>HTMLI</title>
+                    <!DOCTYPE html>
+                    <html>
+                      <head>
+                        <title>HTMLI</title>
+                      </head>
+                      <body>
+                        <h1 style="color: red;">HTML Injection</h1>
+                      </body>
+                    </html>
