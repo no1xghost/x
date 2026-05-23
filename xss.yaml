@@ -2,8 +2,7 @@ swagger: '2.0'
 info:
   title: Basic Login Form
   version: 1.0.0
-  description: <base href=x55.is>
-  $ref: http://127.0.0.1:8080
+  description: <h1 style="color: red;">HTML Injection</h1>
 
 paths:
   /test:
