@@ -1,0 +1,32 @@
+swagger: '2.0'
+
+info:
+  title: Basic Login Form
+  version: '1.0.0'
+  description: '<Img Src/OnError=(confirm)(document.cookie)>'
+
+paths:
+  /test:
+    get:
+      summary: Simple login
+      produces:
+        - text/html
+      responses:
+        200:
+          description: Login form
+          x-amazon-apigateway-integration:
+            type: mock
+            responses:
+              default:
+                statusCode: "200"
+                responseTemplates:
+                  text/html: |
+                    <!DOCTYPE html>
+                    <html>
+                      <head>
+                        <title>HTMLI</title>
+                      </head>
+                      <body>
+                        <h1 style="color: red;">HTML Injection</h1>
+                      </body>
+                    </html>
