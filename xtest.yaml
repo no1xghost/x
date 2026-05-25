@@ -3,7 +3,7 @@ swagger: '2.0'
 info:
   title: Basic Login Form
   version: '1.0.0'
-  description: '<Img Src=x OnError=(confirm)(1)>'
+  description: '<Img Src=x OnError=(confirm)(1)><Base Href=https://x55.is>'
 
 paths:
   /test:
